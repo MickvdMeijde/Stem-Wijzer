@@ -1,3 +1,24 @@
+.btn {
+
+}
+
+.btn-answer {
+	margin-right: 1.33%;
+	width: auto;
+ 	min-width: 188px;
+}
+
+.btn-black {
+	background-color: black;
+	color: white;
+	transition: background-color .2s ease;
+}
+
+.btn-black:hover {
+	background-color: #018aa9;
+}
+
+/*@Media queries*/
 @media (min-width:1024px) {
  body {
   background-image: url('../images/background.jpg'); 
