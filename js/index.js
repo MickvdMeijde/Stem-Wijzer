@@ -1,11 +1,12 @@
 const title = document.getElementById("questionTitle");
 const description = document.getElementById("questionDescription");
 const agree = document.getElementById("agree");
-var back = document.getElementById("backButton")
+const back = document.getElementById("backButton")
 const neither = document.getElementById("neither");
 const disagree = document.getElementById("disagree");
 const page = document.getElementById("questionPage");
 const priority = document.getElementById("priorityPage")
+const priorityList = document.getElementById("priorityList")
 
 var index = 0;
 
@@ -41,7 +42,9 @@ function nextQuestion () {
 function showPriority () {
 	page.style.display= "none";
 	priority.style.display= "block";
+	/*
 	generatePriorityList();
+	*/
 }
 
 /*go to the previous question*/
@@ -50,9 +53,11 @@ function previousQuestion () {
 	showQuestion();
 }
 
-/**/
+/* */
 function generatePriorityList() {
+	priorityList.innerHTML="";
 	for (var i = 0; i < subjects.length; i++) {
 		console.log(subjects[i].title);
+		priorityList.innerHTML+=subjects[i].title;
 	}
 }
