@@ -60,9 +60,6 @@ function generatePriorityList() {
 	}
 }
 
-var answers = [
-	
-	
-];
+var answers = [];
 
 console.log(parties);
