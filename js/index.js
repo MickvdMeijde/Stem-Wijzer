@@ -9,6 +9,8 @@ const priority = document.getElementById("priorityPage");
 const priorityList = document.getElementById("priorityList");
 const partyPage = document.getElementById("partyPage");
 const partyList = document.getElementById("partyList");
+const scorePage = document.getElementById("scorePage");
+const scoreList = document.getElementById("scoreList");
 
 var index = 0;
 
@@ -55,7 +57,7 @@ function previousQuestion() {
 	showQuestion();
 }
 
-/*generate list for end page*/
+/*generate list for priority page*/
 function generatePriorityList() {
 	priorityList.innerHTML = "";
 	for (let i = 0; i < subjects.length; i++) {
@@ -64,20 +66,21 @@ function generatePriorityList() {
 	}
 }
 
+/*result array */
+var priorityResult = [];
+
 /*go to party preference page*/
 function goToPartyPage() {
-	/*take answers from checked poreferences*/
-	var childs = priorityList.childNodes;
-	for (let i = 0; i <childs.length; i++) {
-		if(childs.checked){
-			answers[i].priority = 1;
-		}
-	}
-	console.log(answers)
-	/*show party page*/
-	priority.style.display = "none";
-	partyPage.style.display = "block";
-	generatePartyList();
+    /*take answers from checked poreferences*/
+    var childs = priorityList.childNodes;
+    for (let i = 0; i < childs.length; i++) {
+        priorityResult.push(childs.checked);
+    }
+    console.log(answers)
+    /*show party page*/
+    priority.style.display = "none";
+    partyPage.style.display = "block";
+    generatePartyList();
 }
 
 /*generate party list for end page*/
@@ -86,4 +89,38 @@ function generatePartyList() {
 		partyList.innerHTML +=
 			'<input type="checkbox">' + parties[i].name + "<br />";
 	}
+}
+
+/*generate end score*/
+function generateScoreList() {
+	var childs = partiesList.childNodes;
+
+	for(var i = 0; i < childs.length; i++){
+	    var partyCheckbox = childs[i];
+
+	    var party = parties[i];
+	    if(partyCheckbox.checked){
+	        results.push(party);
+	        results[results.length - 1].score = 0;
+	    }
+	}
+
+	for(var i = 0; i < subjects.length; i++){
+	    var subject = subjects[i];
+
+	    for(var r = 0; r < subject.parties.length; r++){
+	        var party = subject.parties[r];
+
+	        if(party.position == answers[i]){
+	            var result = results[i];
+	            result.score++;
+	            if(priorityResult[i] == true){
+	                result.score++;
+	            }
+	        }
+	    }
+	}
+	console.log(results);
+    partyPage.style.display = "none";
+    scorePage.style.display = "block";
 }
