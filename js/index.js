@@ -7,6 +7,8 @@ const disagree = document.getElementById("disagree");
 const page = document.getElementById("questionPage");
 const priority = document.getElementById("priorityPage");
 const priorityList = document.getElementById("priorityList");
+const partyPage = document.getElementById("partyPage");
+const partyList = document.getElementById("partyList");
 
 var index = 0;
 
@@ -44,9 +46,7 @@ function nextQuestion(vote) {
 function showPriority() {
 	page.style.display = "none";
 	priority.style.display = "block";
-	/*
 	generatePriorityList();
-	*/
 }
 
 /*go to the previous question*/
@@ -59,11 +59,31 @@ function previousQuestion() {
 function generatePriorityList() {
 	priorityList.innerHTML = "";
 	for (let i = 0; i < subjects.length; i++) {
-		console.log(subjects[i].title);
-		priorityList.innerHTML += subjects[i].title;
+		priorityList.innerHTML +=
+			'<input type="checkbox">' + subjects[i].title + "<br />";
 	}
 }
 
-var answers = [];
+/*go to party preference page*/
+function goToPartyPage() {
+	/*take answers from checked poreferences*/
+	var childs = priorityList.childNodes;
+	for (let i = 0; i <childs.length; i++) {
+		if(childs.checked){
+			answers[i].priority = 1;
+		}
+	}
+	console.log(answers)
+	/*show party page*/
+	priority.style.display = "none";
+	partyPage.style.display = "block";
+	generatePartyList();
+}
 
-console.log(parties);
+/*generate party list for end page*/
+function generatePartyList() {
+	for (let i = 0; i < parties.length; i++) {
+		partyList.innerHTML +=
+			'<input type="checkbox">' + parties[i].name + "<br />";
+	}
+}
