@@ -25,8 +25,12 @@ function showQuestion() {
 	description.innerHTML = subjects[index].statement;
 }
 
+/*array with answers*/
+var answers = [];
+
 /*go to next question*/
-function nextQuestion() {
+function nextQuestion(vote) {
+	let answer = answers.push(vote);
 	index++;
 	/*if the end is reached show the last page*/
 	if (index >= subjects.length) {

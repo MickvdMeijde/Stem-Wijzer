@@ -10,7 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
-		<div id="questionPage" class="statement">
+		<main id="questionPage" class="statement">
 			<div class="statement_wrapper">
 				<h1 id="questionTitle" class="statement_title" tabindex="0"></h1>
 				<p id="questionDescription" class="statement_description"></p>
@@ -19,14 +19,14 @@
 				<button id="backButton" class="btn" onclick="previousQuestion()" data-position="-2">
 					<span class="btn_skip">Ga een vraag terug</span>
 				</button>
-				<button id="agree"class="btn btn-black btn-answer js-button-answer" onclick="nextQuestion()" data-position="1">Eens</button>
-				<button id="neither" class="btn btn-black btn-answer js-button-answer" onclick="nextQuestion()"  data-position="0">Geen van beide</button>
-				<button id="disagree" class="btn btn-black btn-answer btn-answer-last js-button-answer" onclick="nextQuestion()"  data-position="-1">Oneens</button>
-				<button class="btn" onclick="nextQuestion()" data-position="-2">
+				<button id="agree"class="btn btn-black btn-answer js-button-answer" onclick="nextQuestion('pro')" data-position="1">Eens</button>
+				<button id="neither" class="btn btn-black btn-answer js-button-answer" onclick="nextQuestion('ambivalent')"  data-position="0">Geen van beide</button>
+				<button id="disagree" class="btn btn-black btn-answer btn-answer-last js-button-answer" onclick="nextQuestion('contra')"  data-position="-1">Oneens</button>
+				<button class="btn" onclick="nextQuestion('skip')" data-position="-2">
 					<span class="btn_skip">Sla deze vraag over</span>
 				</button>
 			</div>
-		</div>
+		</main>
 		<div id="priorityPage" class="statement">
 			<div id="priorityList">
 				<input type="checkbox" name="party">
