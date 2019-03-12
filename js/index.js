@@ -37,7 +37,7 @@ var answers = [];
 
 /*go to next question*/
 function nextQuestion(vote) {
-	let answer = answers.push(vote);
+	answers[index] = vote;
 	index++;
 	/*if the end is reached show the last page*/
 	if (index >= subjects.length) {
@@ -100,7 +100,7 @@ function goToScorePage() {
 /*generate end score*/
 function generateScoreList() {
 	var results = [];
-	var childs = partyList.childNodes;
+	var childs = partyList.querySelectorAll("input");
 
 	for (var i = 0; i < childs.length; i++) {
 		var partyCheckbox = childs[i];
@@ -112,7 +112,7 @@ function generateScoreList() {
 			results[results.length - 1].score = 0;
 		}
 	}
-
+	console.dir(results);
 	for (var i = 0; i < subjects.length; i++) {
 		var subject = subjects[i];
 
@@ -120,12 +120,17 @@ function generateScoreList() {
 			var party = subject.parties[r];
 
 			if (party.position == answers[i]) {
-				results[i].score++;
-				if (priorityResult[i] == true) {
-					results.score++;
+				var result = results.find(function(result) {
+					return result.name == party.name;
+				});
+				if (result){
+					result.score++;
+					if (priorityResult[i] == true) {
+						result.score++;
+					}
 				}
 			}
 		}
 	}
-	console.log(results);
+	console.dir(results1);
 }
