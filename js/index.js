@@ -123,7 +123,7 @@ function generateScoreList() {
 				var result = results.find(function(result) {
 					return result.name == party.name;
 				});
-				if (result){
+				if (result) {
 					result.score++;
 					if (priorityResult[i] == true) {
 						result.score++;
