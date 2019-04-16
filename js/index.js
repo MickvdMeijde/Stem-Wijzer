@@ -112,7 +112,12 @@ function generateScoreList() {
 			results[results.length - 1].score = 0;
 		}
 	}
+	var maxScore = 0;
 	for (var i = 0; i < subjects.length; i++) {
+		maxScore++
+		if (priorityResult[i] == true) {
+			maxScore++;
+		}
 		var subject = subjects[i];
 
 		for (var r = 0; r < subject.parties.length; r++) {
@@ -134,5 +139,9 @@ function generateScoreList() {
 	results.sort(function(a, b) {
 		return b.score - a.score;
 	});
+	for(let i in results){
+		scoreList.innerHTML +=
+			'<h3>'+results[i].name+' score: '+(results[i].score / maxScore * 100).toFixed(1)+'</h3>';
+	}
 	console.dir(results);
 }
