@@ -132,5 +132,5 @@ function generateScoreList() {
 			}
 		}
 	}
-	console.dir(results1);
+	console.dir(results);
 }
