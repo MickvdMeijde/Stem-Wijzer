@@ -112,7 +112,6 @@ function generateScoreList() {
 			results[results.length - 1].score = 0;
 		}
 	}
-	console.dir(results);
 	for (var i = 0; i < subjects.length; i++) {
 		var subject = subjects[i];
 
@@ -132,5 +131,8 @@ function generateScoreList() {
 			}
 		}
 	}
+	results.sort(function(a, b) {
+		return b.score - a.score;
+	});
 	console.dir(results);
 }
