@@ -114,7 +114,7 @@ function generateScoreList() {
 	}
 	var maxScore = 0;
 	for (var i = 0; i < subjects.length; i++) {
-		maxScore++
+		maxScore++;
 		if (priorityResult[i] == true) {
 			maxScore++;
 		}
@@ -139,9 +139,9 @@ function generateScoreList() {
 	results.sort(function(a, b) {
 		return b.score - a.score;
 	});
-	for(let i in results){
+	for (let i in results) {
 		scoreList.innerHTML +=
-			'<h3>'+results[i].name+' score: '+(results[i].score / maxScore * 100).toFixed(1)+'</h3>';
+			"<h3>"+results[i].name+" score: "+"%" +((results[i].score / maxScore) * 100).toFixed(1)+"</h3>";
 	}
 	console.dir(results);
 }
